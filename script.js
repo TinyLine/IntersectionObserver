@@ -1,4 +1,4 @@
-const arr = document.querySelectorAll('img')
+const arr = document.querySelectorAll('.img')
 
 
 

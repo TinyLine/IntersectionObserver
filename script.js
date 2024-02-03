@@ -31,4 +31,3 @@ loadButton.addEventListener('click', () => {
   loadButton.style.display = 'none';
 });
 
-// Код можна покращити більш детальною розміткою або анімаціями, покращенням його інтерфейсу або добавлення більше зображень. Код працює за допомогою intersectionObserver.

@@ -5,13 +5,27 @@
   }
   
   .lazy-load {
-    height: 400px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    height: 500px;
     background-color: #f0f0f0;
     opacity: 0; 
-  transition: opacity 0.3s ease-in; 
+   transition: opacity 2s ease-in; 
   }
 
   .loaded {
     opacity: 1;
   }
 
+#loadButton{ 
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: aqua;
+    margin-top: -200px;
+    width: 90px;
+    height: 40px;
+    cursor: pointer;
+    
+}

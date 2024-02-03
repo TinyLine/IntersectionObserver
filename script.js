@@ -1,20 +1,19 @@
-const arr = document.querySelectorAll('.img')
-
-
-
-const imageObserver = new IntersectionObserver((entries, observer) => {
+const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.src = entry.target.dataset.src
-            observer.unobserve(entry.target)
-        }
-    })
-}, { threshold: 0.1 })
+      lazyLoadImage(entry, observer);
+    });
+    
+  }, { rootMargin: '0px 0px 50px 0px' });
 
+const lazyImages = document.querySelectorAll('.lazy-load');
+const loadButton = document.getElementById('loadButton');
 
-    arr.forEach((evt) => {
-        imageObserver.observe(evt);
-    })
-
-
-
+loadButton.addEventListener('click', () => {
+  lazyImages.forEach(image => {
+    if (!image.src && image.dataset.src) {
+      image.src = image.dataset.src;
+      image.classList.add('loaded');
+    }
+  });
+  loadButton.style.display = 'none';
+});

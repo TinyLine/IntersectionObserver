@@ -1,14 +1,14 @@
 
 // Загрузка зображення як тільки воно стає видимим на екрані
 
-//   const lazyLoadImage = (entry, observer) => {
-//     if (entry.isIntersecting) {
-//       const image = entry.target;
-//       image.src = image.dataset.src;
-//       image.classList.add('loaded'); 
-//       observer.unobserve(image);
-//     }
-//   };
+   const lazyLoadImage = (entry, observer) => {
+     if (entry.isIntersecting) {
+      const image = entry.target;
+     image.src = image.dataset.src;
+    image.classList.add('loaded'); 
+     observer.unobserve(image);
+    }
+   };
 
   const lazyImages = document.querySelectorAll('.lazy-load');
   const loadButton = document.getElementById('loadButton'); 
@@ -30,3 +30,5 @@ loadButton.addEventListener('click', () => {
   });
   loadButton.style.display = 'none';
 });
+
+// Код можна покращити більш детальною розміткою або анімаціями, покращенням його інтерфейсу або добавлення більше зображень. Код працює за допомогою intersectionObserver.

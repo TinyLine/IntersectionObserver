@@ -1,5 +1,5 @@
 
-// Загрузка зображення як тільки воно стає видимим на екрані
+// Завантаження зображення як тільки воно стає видимим на екрані
 
    const lazyLoadImage = (entry, observer) => {
      if (entry.isIntersecting) {
@@ -11,7 +11,8 @@
    };
 
   const lazyImages = document.querySelectorAll('.lazy-load');
-  
+  const loadButton = document.getElementById('loadButton');
+  const closeButton = document.getElementById('closeButton');
 
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -20,26 +21,25 @@
     
   }, );
 
-  const loadButton = document.getElementById('loadButton');
-  const closeButton = document.getElementById('closeButton');
+
   
+  // Завантаження зображення коли натиснута кнопка
   loadButton.addEventListener('click', () => {
     lazyImages.forEach(image => {
-      if (!image.src && image.dataset.src) {
+      if (!image.src) {
         image.src = image.dataset.src;
         image.classList.add('loaded');
       }
     });
   });
-  
+  // Кнопка яка закриває зображення
   closeButton.addEventListener('click', () => {
     lazyImages.forEach(image => {
-      image.src = ''; // Очищаємо атрибут src, щоб зображення зникли
+      image.src = ''; 
       image.classList.remove('loaded');
     });
   });
   
-  // Функція, яка перевіряє стан зображень і відповідно виконує відкриття або закриття
   const toggleImages = () => {
     const allLoaded = Array.from(lazyImages).every(image => image.classList.contains('loaded'));
   
@@ -52,6 +52,5 @@
     }
   };
   
-  // Викликаємо toggleImages після кожного кліку на будь-яку з кнопок
   loadButton.addEventListener('click', toggleImages);
   closeButton.addEventListener('click', toggleImages);

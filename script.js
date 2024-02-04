@@ -11,7 +11,7 @@
    };
 
   const lazyImages = document.querySelectorAll('.lazy-load');
-  const loadButton = document.getElementById('loadButton'); 
+  
 
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -20,14 +20,38 @@
     
   }, );
 
-//   Загрузка зображення при натискання на кнопку
-loadButton.addEventListener('click', () => {
-  lazyImages.forEach(image => {
-    if (!image.src && image.dataset.src) {
-      image.src = image.dataset.src;
-      image.classList.add('loaded');
-    }
+  const loadButton = document.getElementById('loadButton');
+  const closeButton = document.getElementById('closeButton');
+  
+  loadButton.addEventListener('click', () => {
+    lazyImages.forEach(image => {
+      if (!image.src && image.dataset.src) {
+        image.src = image.dataset.src;
+        image.classList.add('loaded');
+      }
+    });
   });
-  loadButton.style.display = 'none';
-});
-
+  
+  closeButton.addEventListener('click', () => {
+    lazyImages.forEach(image => {
+      image.src = ''; // Очищаємо атрибут src, щоб зображення зникли
+      image.classList.remove('loaded');
+    });
+  });
+  
+  // Функція, яка перевіряє стан зображень і відповідно виконує відкриття або закриття
+  const toggleImages = () => {
+    const allLoaded = Array.from(lazyImages).every(image => image.classList.contains('loaded'));
+  
+    if (allLoaded) {
+      loadButton.style.display = 'none';
+      closeButton.style.display = 'inline-block';
+    } else {
+      loadButton.style.display = 'inline-block';
+      closeButton.style.display = 'none';
+    }
+  };
+  
+  // Викликаємо toggleImages після кожного кліку на будь-яку з кнопок
+  loadButton.addEventListener('click', toggleImages);
+  closeButton.addEventListener('click', toggleImages);

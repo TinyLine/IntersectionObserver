@@ -20,12 +20,19 @@
 
 #loadButton{ 
     display: flex;
-    margin-left: auto;
-    margin-right: auto;
     background-color: aqua;
-    margin-top: -200px;
+    margin-top: 20px;
     width: 90px;
     height: 40px;
     cursor: pointer;
     
+}
+
+#closeButton{
+  display: none;
+  background-color: red;
+    margin-top: 20px;
+    width: 90px;
+    height: 40px;
+    cursor: pointer;
 }

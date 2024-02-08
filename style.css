@@ -11,7 +11,7 @@
     height: 500px;
     background-color: #f0f0f0;
     opacity: 0; 
-   transition: opacity 2s ease-in; 
+   transition: opacity 2s ease-in;
   }
 
   .loaded {
@@ -36,3 +36,10 @@
     height: 40px;
     cursor: pointer;
 }
+
+
+
+
+
+
+
